@@ -7,32 +7,35 @@ def directory(file_extension):
     if not file_extension:
        return
     folders_by_extension = {
-        "exe"  = "Sofware",
-        "txt"  = "Texts",
-        "jpg"  = "Images",
-        "jpeg" = "Images",
-        "png"  = "Images",
-        "rar"  = "Compressed Files",
-        "zip"  = "Compressed Files",
-        "ppt"  = "PresentacionPPT",
-        "pptx" = "PresentacionPPT",
-        "doc"  = "OfficeWord",
-        "dodx" = "OfficeWord",
-        "xlsx" = "ExcelFiles",
-        "pdf"  = "PDFDocuments"
+        "exe"  : "Sofware",
+        "txt"  : "Texts",
+        "jpg"  : "Images",
+        "jpeg" : "Images",
+        "png"  : "Images",
+        "rar"  : "Compressed Files",
+        "zip"  : "Compressed Files",
+        "ppt"  : "PresentacionPPT",
+        "pptx" : "PresentacionPPT",
+        "doc"  : "OfficeWord",
+        "docx" : "OfficeWord",
+        "xlsx" : "ExcelFiles",
+        "pdf"  : "PDFDocuments",
+        "py"   : "PYTHONScripts",
+        "mp3"  : "MUSIC",
+        "mp4"  : "MUSIC"
       }
-    return foldes_by_extesion.get(file_extension,'Extras')
+    return folders_by_extension.get(file_extension,'Extras')
 
 def organize(path):
 
-    if not os.path.exits(path):
+    if not os.path.exists(path):
        print(f"ERROR, Not found {path0} or not exists")
        return
     files= os.listdir(path)
-    extensions = [os.path.splitext(file)[1].strip("."") for file in files]
+    extensions = [os.path.splitext(file)[1].strip(".") for file in files]
 
 
-    for ext in extension:
+    for ext in extensions:
         dir =  directory(ext) or ""
         new_directory = os.path.join(path,dir)
         if dir and not os.path.exists(new_directory):
@@ -50,3 +53,13 @@ def organize(path):
           print(f"Was moved {file} into {_dir} directory. \n")
     print(f"All the files was organized succesfully in {path}")
 
+
+if __name__ == "__main__":
+  try:
+    directory_location = sys.argv[1]
+    organize(directory_location)
+  except Exception as e:
+    print(f"There was an error:{str(e)}")
+
+
+# python file_organizer.py /home/soporte/Downloads
