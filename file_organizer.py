@@ -19,6 +19,7 @@ def directory(file_extension):
         "doc"  : "OfficeWord",
         "docx" : "OfficeWord",
         "xlsx" : "ExcelFiles",
+        "xlsm" : "ExcelFiles","
         "pdf"  : "PDFDocuments",
         "py"   : "PYTHONScripts",
         "mp3"  : "MUSIC",
